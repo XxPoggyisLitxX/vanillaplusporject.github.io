@@ -4,89 +4,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  font-family: "Lato", sans-serif;
-  background-color: rgb(61, 61, 61);
-  transition: background-color .5s;
+  margin: 0;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
   display: block;
-  transition: 0.3s;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-.sidenav a:hover {
-  color: rgb(61, 61, 61);
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+#navbar a.active {
+  background-color: #6a00ff;
+  color: white;
 }
 
-#main {
-  transition: margin-left .5s;
+.content {
   padding: 16px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
 }
 </style>
 </head>
 <body>
 
-    <div style="background-color:rgb(9, 6, 6);color:white;padding-top: 0%;">
-       <h1 style="padding: 1%;text-align: center;">Project Vanilla Plus</h1>  
-      </div> 
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Download</a>
-  <a href="#">Discord</a>
-  <a href="#">Contact</a>
+<div class="header">
+  <h2>Pretend here is an image</h2>
+  <p>With a description</p>
 </div>
 
-<div id="main">
-  <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
+<div id="navbar">
+  <a class="active" href="javascript:void(0)">Home</a>
+  <a href="javascript:void(0)">News</a>
+  <a href="javascript:void(0)">Updates</a>
+  <a href="javascript:void(0)">Discord</a>
 </div>
+
+<div class="content">
+  <h3>Project Vanilla Plus</h3>
+  <p>Some text that explains stuff</p>
+</div>
+
 <script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
+window.onscroll = function() {myFunction()};
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-  document.body.style.backgroundColor = "white";
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
 }
 </script>
-   <h1>Heading 1</h1>
-   <p>Text to Display</p>
-   
-  <a href="https://wiki.bedrock.dev/">Visit the Bedrock Wiki!</a>
+
 </body>
-</html> 
+</html>
